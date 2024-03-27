@@ -1,0 +1,46 @@
+name: neorv32_impl
+
+on:
+  push:
+
+jobs:
+
+  neorv32_impl_35t:
+    runs-on: ubuntu-latest
+    env:
+      Board: 35t
+
+    steps:
+
+      - name: '🧰 Checkout'
+        uses: actions/checkout@v4
+
+      - uses: docker://ghcr.io/unike267/containers/impl-arty:latest
+        with:
+          args: ./test.sh
+      
+      - name: '📤 Upload artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: neorv32_impl_35t
+          path: ./neorv32_test_setup_bootloader_35t.bit
+
+  neorv32_impl_100t:
+    runs-on: ubuntu-latest
+    env:
+      Board: 100t
+
+    steps:
+
+      - name: '🧰 Checkout'
+        uses: actions/checkout@v4
+
+      - uses: docker://ghcr.io/unike267/containers/impl-arty:latest
+        with:
+          args: ./test.sh
+      
+      - name: '📤 Upload artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: neorv32_impl_100t
+          path: ./neorv32_test_setup_bootloader_100t.bit
