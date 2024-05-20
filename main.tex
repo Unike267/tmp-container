@@ -1,0 +1,41 @@
+\documentclass{article}
+
+\usepackage{minted}
+
+\begin{document}
+
+\title{Container ghcr.io/unike267/containers/latex-pygments:latest test}
+\author{Unike267}
+\maketitle
+
+\section{Introduction}
+
+This is a \LaTeX{} document to test the following container:
+
+\begin{itemize}
+\item ghcr.io/unike267/containers/latex-pygments:latest
+\end{itemize} 
+
+\noindent This container is built and pushed through continuous integration in the following repository:
+
+\begin{itemize}
+\item Unike267/Containers
+\end{itemize} 
+
+\section{Test}
+
+The following code is shown through \textit{minted} package (which requires the \textit{Pygments} program):
+
+\begin{listing}[!h]
+\begin{minted}{c}
+#include <stdio.h>
+int main() {
+   printf("unike267/containers/latex-pygments:latest"); /*printf() test*/
+   return 0;
+} 
+\end{minted}
+\caption{C code block.}
+\label{code:1}
+\end{listing}
+
+\end{document}
