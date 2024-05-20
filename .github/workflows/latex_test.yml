@@ -1,0 +1,25 @@
+name: latex_test
+
+on:
+  push:
+
+jobs:
+
+  latex_test:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: '🧰 Checkout'
+        uses: actions/checkout@v4
+
+      - uses: docker://ghcr.io/unike267/containers/latex-pygments:latest
+        with:
+          args: ./make.sh
+      
+      - name: '📤 Upload artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf_output
+          path: ./main.pdf
+
