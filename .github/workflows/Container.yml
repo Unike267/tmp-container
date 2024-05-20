@@ -12,7 +12,7 @@ permissions: write-all
 
 jobs:
 
-  Build_container:
+  impl_container:
     runs-on: ubuntu-latest
     
     steps:
@@ -21,13 +21,33 @@ jobs:
         uses: actions/checkout@v4
 
       - name: '⛴️ Build container'
-        run: podman build -t ghcr.io/unike267/containers/impl-arty - < .github/Containerfile
+        run: podman build -t ghcr.io/unike267/containers/impl-arty - < .github/impl.containerfile
 
       - name: '🔑 Login to ghcr.io'
         run: echo $REGISTRY_PASSWORD | podman login $IMAGE_REGISTRY -u $REGISTRY_USER --password-stdin
       
       - name: '🛰️ Push image to ghcr.io'
         run: podman push ghcr.io/unike267/containers/impl-arty
+
+      - name: '🔐 Logout of ghcr.io'
+        run: podman logout $IMAGE_REGISTRY
+
+  latex_container:
+    runs-on: ubuntu-latest
+    
+    steps:
+
+      - name: '🧰 Checkout'
+        uses: actions/checkout@v4
+
+      - name: '⛴️ Build container'
+        run: podman build -t ghcr.io/unike267/containers/latex-pygments - < .github/tex.containerfile
+
+      - name: '🔑 Login to ghcr.io'
+        run: echo $REGISTRY_PASSWORD | podman login $IMAGE_REGISTRY -u $REGISTRY_USER --password-stdin
+      
+      - name: '🛰️ Push image to ghcr.io'
+        run: podman push ghcr.io/unike267/containers/latex-pygments
 
       - name: '🔐 Logout of ghcr.io'
         run: podman logout $IMAGE_REGISTRY
