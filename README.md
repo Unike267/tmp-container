@@ -8,3 +8,6 @@ The **goal** of this repository is to build 🔨 and push 📤 containers in con
     - This container has: `GHDL + yosys + GHDL yosys plugin + nextpnr-xilinx + prjxray` to perform `synthesis + implementation + generate bitstream` on the boards:
         - `Arty A7 35t`
         - `Arty A7 100t`
+
+- `ghcr.io/unike267/containers/latex-pygments:latest`
+    - This container has: `latex` compiler with `pygments` program to use `minted` package
